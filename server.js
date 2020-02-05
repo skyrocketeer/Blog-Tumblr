@@ -22,6 +22,14 @@ conn.on('error', err => {
   console.error('connection error:', err)
 })
 
+/*Adds the react production build to serve react requests*/
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+/*React root*/
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../client/build/index.html'));
+  });
+
 const userRouter = require('./routes/users');
 const sportRouter = require('./routes/sports');
 app.use('/users', userRouter);
@@ -30,3 +38,4 @@ app.use('/sports', sportRouter);
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 })
+
