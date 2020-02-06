@@ -14,7 +14,7 @@ export default class EditUser extends Component{
     componentDidMount(){
         const { match: { params } } = this.props;
         
-        axios.get(`${process.env.REACT_APP_API}/users/${params.userId}`)
+        axios.get(`/users/${params.userId}`)
           .then(response => {
             if(response.status === 200) {
                 this.setState({

@@ -22,7 +22,7 @@ export default class UserList extends Component{
     }
 
     componentDidMount(){
-        axios.get(`${process.env.REACT_APP_API}/users/`)
+        axios.get('/users')
           .then(response => {
             if(response.data.length > 0) {
                 const data = response.data.map(user => { 

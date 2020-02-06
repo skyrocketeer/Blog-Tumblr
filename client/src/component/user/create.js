@@ -26,7 +26,7 @@ export default class CreateUser extends Component{
             age: this.state.age
         } 
         
-        axios.post(`${process.env.REACT_APP_API}/users/add`,payload)
+        axios.post('/users/add',payload)
           .then(response => {
               let x = document.createElement('div');
               const success = ["alert","alert-success"]
