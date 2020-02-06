@@ -40,7 +40,7 @@ app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 })
 
-fs.stat('/client/', function(err) {
+fs.stat('client/', function(err) {
   if (!err) {
       console.log('directory1 exists');
   }
@@ -49,7 +49,7 @@ fs.stat('/client/', function(err) {
   }
 });
 
-fs.stat('/client/build/', function(err) {
+fs.stat('client/build/', function(err) {
   if (!err) {
       console.log('file or directory exists');
   }
