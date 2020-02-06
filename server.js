@@ -40,9 +40,23 @@ app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 })
 
-if (fs.existsSync('/client/build/index.html')) {
-  console.log('Found file');
-}
+fs.stat('/client/', function(err) {
+  if (!err) {
+      console.log('directory1 exists');
+  }
+  else if (err.code === 'ENOENT') {
+      console.log('directory1 does not exist');
+  }
+});
+
+fs.stat('/client/build/', function(err) {
+  if (!err) {
+      console.log('file or directory exists');
+  }
+  else if (err.code === 'ENOENT') {
+      console.log('file or directory does not exist');
+  }
+});
 /* Serve the static files from the React app */
 app.use(express.static(path.join(__dirname, '/client/build')));
 
