@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path'); 
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -22,14 +23,6 @@ conn.on('error', err => {
   console.error('connection error:', err)
 })
 
-/*Adds the react production build to serve react requests*/
-app.use(express.static(path.join(__dirname, '../client/build')));
-
-/*React root*/
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '../client/build/index.html'));
-  });
-
 const userRouter = require('./routes/users');
 const sportRouter = require('./routes/sports');
 app.use('/users', userRouter);
@@ -39,3 +32,10 @@ app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 })
 
+/* Serve the static files from the React app */
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+/* Handles any requests that don't match the ones above*/
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + 'client/build/index.html'));
+});

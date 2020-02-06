@@ -17,7 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev:hot": "webpack-dev-server -d --config ./webpack.devel.config.js --hot --inline --progress --colors" 
   },
   "eslintConfig": {
     "extends": "react-app"

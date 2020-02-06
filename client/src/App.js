@@ -1,10 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/button.css';
-// import './App.css';
+import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import Navbar from './component/navbar';
+import Navbar from './component/layout/navbar';
+import Homepage from './component/homepage/homepage';
 import CreateUser from './component/user/create';
 import UserList from './component/user/list';
 import EditUser from './component/user/edit';
@@ -16,7 +17,8 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div id="main-app" className="container col-8 my-3">
+      <div id="main-app" className="container col-10 my-3">
+        <Route className="App-link" path="/home" component={Homepage}></Route>
         <Route className="App-link" path="/users/list" component={UserList}></Route>
         <Route className="App-link" path="/user/create" component={CreateUser}></Route>
         <Route className="App-link" path="/user/:userId/edit" component={EditUser}></Route>
