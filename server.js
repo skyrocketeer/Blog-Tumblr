@@ -12,8 +12,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.MONGODB;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
+// const uri = process.env.MONGODB;
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if(env === 'development'){
+    mongoose.connect('mongodb://localhost:27017/unmask-me',{ useNewUrlParser: true, useCreateIndex: true });
+  }else{
+    mongoose.connect('mongodb+srv://jimmy_moonstudio:jimmy_moonstudio@cluster0-ingpq.gcp.mongodb.net/unmasked?retryWrites=true&w=majority', { useNewUrlParser: true, useCreateIndex: true });
+} 
+
+// mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
 const conn = mongoose.connection
 conn.once('open', _ => {
   console.log('Database connected:', uri)
