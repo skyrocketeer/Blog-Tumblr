@@ -7,13 +7,13 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const port = process.env.PORT || 6000;
-console.log(process.env.MONGODB);
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // const uri = process.env.MONGODB;
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'development';
 
 if(env === 'development'){
     mongoose.connect('mongodb://localhost:27017/unmask-me',{ useNewUrlParser: true, useCreateIndex: true });
@@ -24,7 +24,7 @@ if(env === 'development'){
 // mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
 const conn = mongoose.connection
 conn.once('open', _ => {
-  console.log('Database connected:', uri)
+  console.log('Database connected:')
 })
 
 conn.on('error', err => {
