@@ -45,7 +45,7 @@ export default class EditUser extends Component{
             age: this.state.age
         }
         
-        axios.put(`${process.env.REACT_APP_API}/users/${this.state.id}/update`, payload)
+        axios.put(`/users/${this.state.id}/update`, payload)
          .then( response  => {
             let x = document.createElement('div');
             const success = ["alert","alert-success"]
@@ -55,11 +55,13 @@ export default class EditUser extends Component{
                 x.classList.add(...success);
                 x.innerHTML = `<strong>${response.data}</strong>`
                 document.querySelector('#main-app').appendChild(x);
-                window.setTimeout(()=>window.location='/users/list',1000)
+                window.setTimeout(()=>window.location='/users/list',800)
+                x.remove();
             } else {
                 x.classList.add(...fail)
                 x.innerHTML = `<strong>Fail</strong>`
                 document.querySelector('#main-app').appendChild(x)
+                window.setTimeout(() => x.remove(),1000);
             }
          })
         

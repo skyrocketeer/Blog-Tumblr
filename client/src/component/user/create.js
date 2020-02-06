@@ -37,10 +37,13 @@ export default class CreateUser extends Component{
                 x.classList.add(...success);
                 x.innerHTML = `<strong>${response.data}</strong>`
                 document.querySelector('#main-app').appendChild(x)
+                window.setTimeout(()=>window.location='/users/list',800)
+                x.remove();
             } else {
                 x.classList.add(...fail)
                 x.innerHTML = '<strong>Failed to create new user</strong>'
                 document.querySelector('#main-app').appendChild(x)
+                window.setTimeout(() => x.remove(),1000);
             }
          })
           .catch(err => console.log(err))
