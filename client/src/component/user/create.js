@@ -29,17 +29,18 @@ export default class CreateUser extends Component{
         axios.post('/users/add',payload)
           .then(response => {
               let x = document.createElement('div');
+              x.setAttribute("style","font-size: 20px; display:block")
               const success = ["alert","alert-success"]
               const fail = ["alert","alert-danger"]
               
             if(response.status === 200) {
                 x.classList.add(...success);
                 x.innerHTML = `<strong>${response.data}</strong>`
-                document.querySelector('#main-app').firstChild.appendChild(x)
+                document.querySelector('#main-app').appendChild(x)
             } else {
                 x.classList.add(...fail)
-                x.innerHTML = `<strong>Fail</strong>`
-                document.querySelector('#main-app').firstChild.appendChild(x)
+                x.innerHTML = '<strong>Failed to create new user</strong>'
+                document.querySelector('#main-app').appendChild(x)
             }
          })
           .catch(err => console.log(err))
