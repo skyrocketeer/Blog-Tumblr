@@ -39,7 +39,10 @@ app.use('/sports', sportRouter);
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 })
-console.log(process.cwd());
+
+if (fs.existsSync('/client/build/index.html')) {
+  console.log('Found file');
+}
 /* Serve the static files from the React app */
 app.use(express.static(path.join(__dirname, '/client/build')));
 
