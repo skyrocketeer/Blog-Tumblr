@@ -13,9 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.MONGODB;
-console.log(uri);
-console.log(typeof uri);
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 const conn = mongoose.connection
 conn.once('open', _ => {
   console.log('Database connected: ', uri)

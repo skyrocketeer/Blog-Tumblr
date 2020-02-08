@@ -24,6 +24,7 @@ export default class UserList extends Component{
     componentDidMount(){
         axios.get(`/users`)
           .then(response => {
+            console.log(response.data[0]);
             if(response.data.length > 0) {
               const data = response.data.map(user => { 
                 console.log(typeof user._id)

@@ -16,8 +16,9 @@ export default class EditUser extends Component{
         
         axios.get(`/users/${params.userId}`)
           .then(response => {
-              console.log(response);
+              console.log(response)
             if(response.status === 200) {
+                console.log(response.data)
                 this.setState({
                     id: response.data._id,
                     username: response.data.username,
@@ -56,7 +57,7 @@ export default class EditUser extends Component{
                 x.classList.add(...success);
                 x.innerHTML = `<strong>${response.data}</strong>`
                 document.querySelector('#main-app').appendChild(x);
-                window.setTimeout(()=>window.location='/users/list',800)
+                window.setTimeout(()=>window.location='/users/list',1000)
                 x.remove();
             } else {
                 x.classList.add(...fail)
