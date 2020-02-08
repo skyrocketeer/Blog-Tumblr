@@ -16,6 +16,7 @@ export default class EditUser extends Component{
         
         axios.get(`/users/${params.userId}`)
           .then(response => {
+              console.log(response);
             if(response.status === 200) {
                 this.setState({
                     id: response.data._id,

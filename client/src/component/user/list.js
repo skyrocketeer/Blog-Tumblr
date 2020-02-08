@@ -8,9 +8,9 @@ export default class UserList extends Component{
 
         this.state = { 
             users: [{
-                id: '',
-               username: '',
-               age: '',
+              id: '',
+              username: '',
+              age: '',
             }],
         };
 
@@ -22,17 +22,18 @@ export default class UserList extends Component{
     }
 
     componentDidMount(){
-        axios.get('/users')
+        axios.get(`/users`)
           .then(response => {
             if(response.data.length > 0) {
-                const data = response.data.map(user => { 
-                    return ({
-                        id: user._id,
-                        username: user.username, 
-                        age: user.age
-                    })
+              const data = response.data.map(user => { 
+                console.log(typeof user._id)
+                return ({
+                    id: user._id,
+                    username: user.username, 
+                    age: user.age
                 })
-                this.setState({users: data})  
+              })
+              this.setState({ users: data })  
             }
           })
           .catch(err => console.log(err))
@@ -53,25 +54,25 @@ export default class UserList extends Component{
                 </thead>
                 <tbody>
                   { this.state.users.map( (user,index) => { 
-                      return (
-                          <tr key={index} style={{textAlign: "center"}}>
-                            <th scope="row">{index+1}</th>
-                            <td>{user.username}</td>
-                            <td>{user.age}</td>
-                            <td>
-                              <Link to={`/user/${user.id}/edit`} 
-                                    className="btn btn-success btn-sm round-btn"
-                                    style={{margin: "auto 2px"}}>
-                                        Edit 
-                                </Link>
-                              <button className="btn btn-danger btn-sm round-btn" 
-                                      style={{margin: "auto 2px"}}
-                                      onClick={()=>this.handleDelete(user.id)}>
-                                  Delete
-                              </button>
-                            </td>
-                          </tr>  
-                      )} 
+                    return (
+                      <tr key={index} style={{textAlign: "center"}}>
+                        <th scope="row">{index+1}</th>
+                        <td>{user.username}</td>
+                        <td>{user.age}</td>
+                        <td>
+                          <Link to={`/user/${user.id}/edit`} 
+                                className="btn btn-success btn-sm round-btn"
+                                style={{margin: "auto 2px"}}>
+                                    Edit 
+                          </Link>
+                          <button className="btn btn-danger btn-sm round-btn" 
+                                  style={{margin: "auto 2px"}}
+                                  onClick={()=>this.handleDelete(user.id)}>
+                              Delete
+                          </button>
+                        </td>
+                      </tr>  
+                    )} 
                   )}
                 </tbody>
               </table>

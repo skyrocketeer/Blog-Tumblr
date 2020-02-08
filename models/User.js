@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userCollection = new Schema({
-    _id: {
-        type: String
-    },
     username:{
         type: String,
         required: true,

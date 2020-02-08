@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
 let User = require('../models/User');
 
 router.route('/').get((req, res) => {
@@ -19,7 +20,7 @@ router.route('/add').post((req, res) => {
 });
 
 router.route('/:id').get((req, res) => {
-    User.findById(req.params.id)
+    User.findById(mongoose.Types.ObjectId(req.params.id))
       .then(user => res.json(user))
       .catch(err => res.status(400).json('err: ' + err))
 });

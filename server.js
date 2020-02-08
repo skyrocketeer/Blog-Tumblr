@@ -13,7 +13,8 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.MONGODB;
-
+console.log(uri);
+console.log(typeof uri);
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
 const conn = mongoose.connection
 conn.once('open', _ => {
