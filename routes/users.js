@@ -2,12 +2,6 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 let User = require('../models/User');
 
-router.route('/').get((req, res) => {
-    User.find()
-      .then(users => res.json(users))
-      .catch(err => res.status(400).json('err: ' + err))
-});
-
 router.route('/add').post((req, res) => {
     const username = req.body.username;
     const age = req.body.age;
@@ -40,6 +34,12 @@ router.route('/:id/update').put((req, res) => {
           .catch(err => res.status(400).json('err: ' + err))
       })
       .catch(err => res.status(400).json('err: ' + err))
+});
+
+router.route('/').get((req, res) => {
+  User.find()
+    .then(users => res.json(users))
+    .catch(err => res.status(400).json('err: ' + err))
 });
 
 module.exports = router;
