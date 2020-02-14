@@ -1,8 +1,8 @@
 # BASIC CRUD APP USING Mern-stack
 
-<i>Clone the project</i>
+### <i>Clone the project</i>
 
-##Backend
+## Backend
 <p>cd backend</p>
 <p>npm install</p>
 <i> Run server and connect Db </i>
