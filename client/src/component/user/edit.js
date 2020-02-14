@@ -55,7 +55,7 @@ export default class EditUser extends Component{
                 x.classList.add(...success);
                 x.innerHTML = `<strong>${response.data}</strong>`
                 document.querySelector('#main-app').appendChild(x);
-                window.setTimeout(()=>window.location='/users/list',1000)
+                window.setTimeout(()=>this.props.history.push('/users/list'),1000)
                 x.remove();
             } else {
                 x.classList.add(...fail)
