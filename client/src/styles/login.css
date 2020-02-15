@@ -142,3 +142,11 @@
 .has-val.input100 + .focus-input100::after {
   color: #a64bf4;
 }
+.flex-c-m {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.cursorSignUp{
+  cursor: pointer;
+}
