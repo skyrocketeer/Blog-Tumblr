@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/button.css';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import Navbar from './component/layout/Navbar';
 import TabScreen from './component/layout/LoginTabScreen';

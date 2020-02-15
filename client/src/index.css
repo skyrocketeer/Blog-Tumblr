@@ -218,10 +218,9 @@ iframe {
 
 /*//////////////////////////////////////////////////////////////////
 [ Social item ]*/
-.login100-social-item {
+.social-item {
   font-size: 25px;
   color: #fff;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -235,17 +234,7 @@ iframe {
   margin: 5px;
 }
 
-.login100-social-item:hover {
+.social-item:hover {
   color: #fff;
   background-color: #333333;
 }
-
-/*//////////////////////////////////////////////////////////////////
-[ Responsive ]*/
-
-@media (max-width: 576px) {
-  .wrap-login100 {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-} 
