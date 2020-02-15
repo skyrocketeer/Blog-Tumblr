@@ -12,27 +12,14 @@ import EditSport from './component/sport/edit';
 import NotFound from './component/layout/404/404page.js';
 
 export default class App extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state={
-  //     loginPage: <TabScreen/>,
-  //   }
-  // }
-
-  // componentWillMount(){
-  //   let loginPage = [];
-  //   loginPage.push(<TabScreen />);
-  //   this.setState({ loginPage: loginPage })
-  // }
-
   render(){
     return (
       <Router>
         <Navbar />
         <div id="main-app" className="container col-10 my-3">
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/login" />}></Route>
-            <Route className="App-link" path="/login" component={TabScreen}></Route>
+            <Route exact path="/" render={() => <Redirect to="/account" />}></Route>
+            <Route className="App-link" path="/account" component={TabScreen}></Route>
             <Route className="App-link" path="/users/list" component={UserList}></Route>
             <Route className="App-link" path="/user/create" component={CreateUser}></Route>
             <Route className="App-link" path="/user/:userId/edit" component={EditUser}></Route>

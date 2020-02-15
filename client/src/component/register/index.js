@@ -16,8 +16,8 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="limiter">
-        <div className="container-register100" style={{backgroundImage: "url('../../images/bg-01.jpg')"}}>
+      <>
+        <div className="container-register100" style={{backgroundImage: "url(../../images/bg-01.jpg)"}}>
           <div className="wrap-register100 p-l-55 p-r-55 p-t-65 p-b-54">
             <form className="register100-form validate-form">
               <span className="register100-form-title p-b-49">
@@ -77,7 +77,7 @@ export default class Register extends Component {
             
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
