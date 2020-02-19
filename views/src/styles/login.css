@@ -144,6 +144,7 @@
 .has-val.input100 + .focus-input100::after {
   color: #a64bf4;
 }
+<<<<<<< HEAD:views/src/styles/login.css
 
 /*------------------------------------------------------------------
 [ Button ]*/
@@ -224,3 +225,13 @@
     padding-right: 15px;
   }
 } 
+=======
+.flex-c-m {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.cursorSignUp{
+  cursor: pointer;
+}
+>>>>>>> 03716b818b11438df7e2b3ea6c1755e210840b7f:client/src/styles/login.css
