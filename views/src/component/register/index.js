@@ -76,6 +76,8 @@ export default class Register extends Component {
               <div className="wrap-input100">
                 <span className="label-input100">Email</span>
                 <input className="input100" 
+                       pattern="[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}"
+                       title="Username should only contain lowercase letters. e.g. john"
                        type="text" 
                        name="email" 
                        placeholder="Type in your email" 
@@ -89,6 +91,8 @@ export default class Register extends Component {
               <div className="wrap-input100">
                 <span className="label-input100">Password</span>
                 <input className="input100" 
+                      pattern="[A-Z0-9a-z]{6,8}"
+                      title="Username should only contain lowercase letters. e.g. john"
                        type="password" 
                        name="password" 
                        placeholder="Type in your password" 
@@ -100,6 +104,8 @@ export default class Register extends Component {
               <div className="wrap-input100">
                 <span className="label-input100">Password check</span>
                 <input className="input100" 
+                      pattern="[A-Z0-9a-z]{6,8}"
+                      title="Username should only contain lowercase letters. e.g. john"
                        type="password" 
                        name="confirm-password" 
                        placeholder="retype your password" 
@@ -111,7 +117,9 @@ export default class Register extends Component {
               
               <div className="wrap-input100">
                 <span className="label-input100">Nickname</span>
-                <input className="input100" 
+                <input className="input100"
+                      pattern="[A-Z0-9a-z]{6,8}"
+                      title="Username should only contain lowercase letters. e.g. john" 
                        type="text" 
                        name="nickname" 
                        placeholder="Type in your name" 
