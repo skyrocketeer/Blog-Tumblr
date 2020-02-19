@@ -147,7 +147,7 @@
 
 /*------------------------------------------------------------------
 [ Button ]*/
-.container-register100-form-btn {
+.register-btn-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -156,16 +156,8 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1.5rem;
-}
-
-.wrap-register100-form-btn {
-  width: 100%;
-  display: block;
-  position: relative;
-  z-index: 1;
   border-radius: 25px;
   overflow: hidden;
-  margin: 0 auto;
 
   box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
   -moz-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
@@ -174,32 +166,24 @@
   -ms-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
 }
 
-.register100-form-bgbtn {
-  position: absolute;
-  z-index: -1;
-  width: 300%;
-  height: 100%;
+.register-btn-text {
   background: #a64bf4;
-  background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: -webkit-linear-gradient(to left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: -o-linear-gradient(to left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: -moz-linear-gradient(to left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: linear-gradient(to left, #00dbde, #fc00ff, #00dbde, #fc00ff);
   top: 0;
   left: -100%;
-
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
-}
 
-.register100-form-btn {
   font-family: Poppins-Medium;
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -212,15 +196,24 @@
   height: 50px;
 }
 
-.wrap-register100-form-btn:hover .register100-form-bgbtn {
+.register-btn-wrapper:hover .register-btn-text {
   left: 0;
+}
+
+/*
+  ===== select box =======
+*/
+#select-box{
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
 
 @media (max-width: 576px) {
-  .wrap-register100 {
+  .register-btn-wrapper {
     padding-left: 15px;
     padding-right: 15px;
   }
