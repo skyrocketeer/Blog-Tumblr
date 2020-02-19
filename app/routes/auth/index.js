@@ -12,11 +12,20 @@ router.route('/register').post( function(req, res, next) {
       if(user) {
         return res.send(409, { message: 'Email is already taken' });
       } else {
-        return res.json({ message:'Registration successful' });
+        let newUser = new User();
+      // lưu thông tin cho tài khoản local
+        newUser.email = req.body.email;
+        newUser.password = newUser.generateHash(req.body.password);
+        newUser.nickname = req.body.nickname;
+        newUser.zodiac_sign = req.body.zodiac_sign;  
+      // lưu user
+        newUser.save( function(err){
+          if(err) throw err
+          return res.json({ message:'Registration successful' });
+        });
       }
     })
-  }
-  catch(err){
+  }catch(err){
     res.send(500, { message: 'server error' })
   }
 });
