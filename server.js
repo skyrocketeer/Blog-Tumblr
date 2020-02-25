@@ -59,6 +59,6 @@ app.listen(port, () => {
 app.use('/static', express.static(path.join(__dirname, '/views/build')));
 
 /* Handles any requests that don't match the ones above*/
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/build/index.html'));
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/build', 'index.html'));
 });

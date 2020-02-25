@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "dev:hot": "webpack-dev-server -d --config ./webpack.devel.config.js --hot --inline --progress --colors"
   },
-  "homepage": "http://unmask-me.local",
+  "homepage": "https://unmask-me.herokuapp.com/views/build",
   "eslintConfig": {
     "extends": "react-app"
   },
