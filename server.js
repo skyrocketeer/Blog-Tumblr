@@ -40,7 +40,6 @@ conn.on('error', err => {
 //Enabling CORS Pre-Flight
 app.options('*', cors());
 
-
 // passport config
 require('./config/passport')(passport);
 app.use(session({ secret: 'cat passport', resave: false, saveUninitialized: false })); // chuối bí mật đã mã hóa cookie
@@ -56,7 +55,7 @@ app.listen(port, () => {
 })
 
 /* Serve the static files from the React app */
-app.use(express.static(path.join(__dirname, '/views/build')));
+app.use(express.static(path.join(__dirname, '/views/build','static')));
 
 /* Handles any requests that don't match the ones above*/
 app.get('/*', function (req, res) {
