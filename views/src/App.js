@@ -1,5 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+import './fonts/font-awesome-4.7.0/css/font-awesome.min.css';
+import './fonts/iconic/css/material-design-iconic-font.min.css';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import Navbar from './component/layout/Navbar';
 import TabScreen from './component/layout/LoginTabScreen';
