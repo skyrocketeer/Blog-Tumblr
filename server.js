@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const errorHandler = require('errorhandler');
-const morgan = require('morgan');
 const db = require('./config/database.js');
 const port = process.env.PORT || 6000;
 
@@ -41,8 +40,6 @@ conn.on('error', err => {
 //Enabling CORS Pre-Flight
 app.options('*', cors());
 
-//log res, req
-// morgan('tiny');
 
 // passport config
 require('./config/passport')(passport);
@@ -55,7 +52,7 @@ const routes = require('./app/routes');
 app.use(routes);
 
 app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`)
+  console.log(`Server is running on port: ${port}`)
 })
 
 /* Serve the static files from the React app */

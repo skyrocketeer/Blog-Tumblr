@@ -14,32 +14,49 @@ export default class Register extends Component {
   constructor(props){
     super(props);
     this.state = {
-      email:'',
-      password:'',
+      user: {
+        email:'',
+        password:'',
+        nickname: '',
+        sign: {
+          id: '',
+          text: ''
+        },
+      },
       is_pass_matched: true,
-      nickname: '',
-      sign: '',
       zodiac_signs:  ['Leo', 'Cancer', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'],
       alert: false
     }
   }
 
-  handleInputChange = (e) => {
-    const name = e.target.name;
-    this.setState({
-      [name]: e.target.value
-    });
+  shouldComponentUpdate(nextProps, nextState){
+    console.log(nextState.alert);
+    if(this.state.alert !== nextState.alert){
+      console.log(nextState.alert);
+      return true
+    }
+    return false;
   }
 
+  handleInputChange = (e) => {
+    const user = {...this.state.user};
+    const name = e.target.name;
+    user[name] = e.target.value || ''; 
+    this.setState({ user });
+  }
+  
   checkPassword = (event) => {
-    if (event.target.value !== this.state.password) {
+    if (event.target.value !== this.state.user.password) {
       this.setState({ is_pass_matched: false })
     }
     else this.setState({ is_pass_matched: true })
   }
 
   onSelected = (e) => {
-    this.setState({ sign: e.target.value })
+    let selected  = this.state.user.sign;
+    selected.id = e.target.value;
+
+    this.setState({ 'user.sign': {...selected} })
   }
 
   onSubmit = (e) => {
@@ -47,19 +64,20 @@ export default class Register extends Component {
     if (this.state.is_pass_matched) {
       const isProduction = process.env.NODE_ENV === 'production';
       const API_URI = isProduction? process.env.HOST : process.env.REACT_APP_API;
-      const payload = {
-        email: this.state.email,
-        password: this.state.password,
-        zodiac_sign: this.state.sign,
-        nickname: this.state.nickname
-      }
+      const payload = {...this.state.user}
       
       axios.post(`${API_URI}/auth/register`, payload)
-      .then(response => {
-        if(response.status === 409 ) return this.setState({alert: true})
+       .then((success, error) => {
+        if(error){
+          if(error.status === 409 ) {
+            this.setState({ alert: true })
+            console.log(this.state.alert);
+            return;
+          }
+        }
         this.context.history.push('/users');
-      })
-      .catch(err => console.log(err))  
+       })
+       .catch(err => console.log(err.response))  
     }
   }
 
@@ -84,7 +102,7 @@ export default class Register extends Component {
                 <span className="focus-input100" data-symbol="&#xf206;"></span>
               </div>
 
-              {this.alert? ( <AlertText type="email" />) : (null)}
+              {this.state.alert? ( <AlertText type="email" />) : (null)}
 
               <div className="wrap-input100">
                 <span className="label-input100">Password</span>
@@ -122,7 +140,8 @@ export default class Register extends Component {
 
               <div className="wrap-input100" style={{borderBottom: "none"}}>
                 <span className="label-input100">Zodiac sign</span>
-                <select className="input100"  
+                <select className="input100" 
+                        name = "sign" 
                         id="select-box" 
                         onChange={this.onSelected} 
                 >

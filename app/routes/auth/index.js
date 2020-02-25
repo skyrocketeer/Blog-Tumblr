@@ -1,23 +1,22 @@
 const router = require('express').Router();
 const passport = require('passport');
-const User = require('../..//models/User'); 
+const User = require('../../models/User'); 
 
-router.route('/register').post( function(req, res, next) {
+router.route('/register').post( async function(req, res, next) {
   try{
-    User.findOne({ email: req.body.email }, function(err, user){
+    await User.findOne({ email: req.body.email }, function(err, user){
       if(err) {
-        throw err;
-        // return res.json({ message: error })
+        return res.status(500).json({ message: 'Server error' })
       }
       if(user) {
-        return res.send(409, { message: 'Email is already taken' });
+        return res.status(409).json({ message: 'Email is already taken' });
       } else {
         let newUser = new User();
       // lưu thông tin cho tài khoản local
         newUser.email = req.body.email;
         newUser.password = newUser.generateHash(req.body.password);
         newUser.nickname = req.body.nickname;
-        newUser.zodiac_sign = req.body.zodiac_sign;  
+        newUser.zodiac_sign.id = req.body.sign.id;  
       // lưu user
         newUser.save( function(err){
           if(err) throw err
@@ -26,7 +25,8 @@ router.route('/register').post( function(req, res, next) {
       }
     })
   }catch(err){
-    res.send(500, { message: 'server error' })
+    console.log(err)
+    res.status(500).json({ message: 'Server error' })
   }
 });
 
