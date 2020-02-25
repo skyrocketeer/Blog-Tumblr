@@ -25,7 +25,7 @@ if(!isProduction) {
 
 //db config
 mongoose.connect(db.uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
-  .catch(error => handleError(error));
+  .catch(error => console.log(error));
 
 mongoose.set('debug', true);
 const conn = mongoose.connection
