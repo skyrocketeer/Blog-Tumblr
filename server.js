@@ -56,7 +56,7 @@ app.listen(port, () => {
 })
 
 /* Serve the static files from the React app */
-app.use('/static', express.static(path.join(__dirname, '/views/build')));
+app.use(express.static(path.join(__dirname, '/views/build')));
 
 /* Handles any requests that don't match the ones above*/
 app.get('/*', function (req, res) {
