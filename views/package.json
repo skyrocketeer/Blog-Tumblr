@@ -19,12 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev:hot": "webpack-dev-server -d --config ./webpack.devel.config.js --hot --inline --progress --colors"
-  },
-  "homepage": "https://unmask-me.herokuapp.com/views/build",
-  "eslintConfig": {
-    "extends": "react-app"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [

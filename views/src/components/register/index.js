@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router'; 
-import '../../styles/register.css';
+import '../../css/register.css';
 import axios from 'axios';
 
 function AlertText(props) {

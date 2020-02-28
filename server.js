@@ -41,23 +41,21 @@ conn.on('error', err => {
 app.options('*', cors());
 
 // passport config
-require('./config/passport')(passport);
-app.use(session({ secret: 'cat passport', resave: false, saveUninitialized: false })); // chuối bí mật đã mã hóa cookie
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+// require('./config/passport')(passport);
+// app.use(session({ secret: 'cat passport', resave: false, saveUninitialized: false })); // chuối bí mật đã mã hóa cookie
+// app.use(passport.initialize());
+// app.use(passport.session()); // persistent login sessions
 
 //routes
-const routes = require('./app/routes');
-app.use(routes);
+// const routes = require('./app/routes');
+// app.use(routes);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`)
-})
+});
 
 /* Serve the static files from the React app */
-app.use('/static', express.static(path.join(__dirname, '/views/build')));
-
-/* Handles any requests that don't match the ones above*/
+app.use( '/static', express.static(path.join(__dirname, '/views/build/static/')) );
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/build', 'index.html'));
 });
