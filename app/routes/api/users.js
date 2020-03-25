@@ -14,11 +14,11 @@ let User = require('../../models/User');
 //       .catch( err => res.status(400).json('err: ' + err))
 // });
 
-// router.route('/:id').get((req, res) => {
-//     User.findById(mongoose.Types.ObjectId(req.params.id))
-//       .then(user => res.json(user))
-//       .catch(err => res.status(400).json('err: ' + err))
-// });
+router.route('/:id').get((req, res) => {
+    User.findById(mongoose.Types.ObjectId(req.params.id))
+      .then(user => res.json(user))
+      .catch(err => res.status(400).json('err: ' + err))
+});
 
 // router.route('/:id/delete').delete((req, res) => {
 //     User.findByIdAndDelete(req.params.id)

@@ -21,43 +21,24 @@ module.exports = function (passport) {
     });
   });
 
-  // =========================================================================
-  // LOCAL REGISTER ============================================================
-  // =========================================================================
-  // passport.use('local-register', new LocalStrategy({
-  //   // mặc định local strategy sử dụng username và password,
-  //   // chúng ta cần cấu hình lại
-  //   usernameField: 'email',
-  //   passwordField: 'password',
-  //   passReqToCallback: true // supply verify callback
-  // },
-  //   function (req, email, password, done) {
-  //     // asynchronous
-  //     // Tìm một user theo email
-  //     // chúng ta kiểm tra xem user đã tồn tại hay không
-  //     User.findOne({ email: email }, function (err, user) {
-  //       if (err)
-  //         return done(err);
-  //       if (user) {
-  //         return done(null, false, { 'message': 'Email is already taken' });
-  //       } else {
-  //         // Nếu chưa user nào sử dụng email này
-  //         // tạo mới user
-  //         let newUser = new User();
-  //         console.log('sdf');
-  //         // lưu thông tin cho tài khoản local
-  //         newUser.email = req.body.email;
-  //         newUser.password = newUser.generateHash(req.body.password);
-  //         newUser.nickname = req.body.nickname;
-  //         newUser.zodiac_sign = req.body.zodiac_sign;
-          
-  //         // lưu user
-  //         newUser.save(function (err) {
-  //           if (err)
-  //             throw err;
-  //           return done(null, newUser);
-  //         });
-  //       }
-  //     });
-  //   }));
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    UserDetails.findOne({ username: username}, function(err, user) {
+      if (err) {
+        return done(err);
+      }
+
+      if (!user) {
+        return done(null, false);
+      }
+
+      if (user.password != password) {
+        return done(null, false);
+      }
+      return done(null, user);
+    });
+  }
+));
+
 };

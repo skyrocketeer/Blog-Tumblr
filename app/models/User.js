@@ -12,7 +12,13 @@ const userSchema = new mongoose.Schema({
     zodiac_sign: {
         id: Number,
         text: String
-    }
+    },
+    passwordResetToken: String,
+    passwordResetExpires: Date,
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
     // facebook: {
     //     id: String,
     //     token: String,

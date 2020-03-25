@@ -28,10 +28,12 @@ export default class Register extends Component {
     }
   }
 
+  onScreenChange = (event) => {
+    this.props.changeScreen()
+  }
+
   shouldComponentUpdate(nextProps, nextState){
-    console.log(nextState.alert);
     if(this.state.alert !== nextState.alert){
-      console.log(nextState.alert);
       return true
     }
     return false;
@@ -47,8 +49,12 @@ export default class Register extends Component {
   checkPassword = (event) => {
     if (event.target.value !== this.state.user.password) {
       this.setState({ is_pass_matched: false })
+      this.setState({ alert: true })
     }
-    else this.setState({ is_pass_matched: true })
+    else {
+      this.setState({ is_pass_matched: true })
+      this.setState({ alert: false })
+    }
   }
 
   onSelected = (e) => {
@@ -69,14 +75,14 @@ export default class Register extends Component {
        .then((success, error) => {
         if(error){
           if(error.status === 409 ) {
-            this.setState({ alert: true })
-            console.log(this.state.alert);
+            // this.setState({ alert: true })
+            console.log(error.message);
             return;
           }
         }
-        this.context.history.push('/users');
+        this.context.history.push('/verification');
        })
-       .catch(err => console.log(err.response))  
+       .catch(err => console.log(err))  
     }
   }
 
@@ -101,7 +107,7 @@ export default class Register extends Component {
                 <span className="focus-input100" data-symbol="&#xf206;"></span>
               </div>
 
-              {this.state.alert? ( <AlertText type="email" />) : (null)}
+              {/* {this.state.alert? ( <AlertText type="email" />) : (null)} */}
 
               <div className="wrap-input100">
                 <span className="label-input100">Password</span>
@@ -151,7 +157,10 @@ export default class Register extends Component {
               </div>
 
               <div className="register-btn-wrapper">
-                  <input type="submit" className="register-btn-text" value="Register" />
+                  <input type="submit" 
+                         className="register-btn-text" 
+                         value="Register" 
+                  />
               </div>
     
               <div className="txt1 text-center p-t-54 p-b-20">
@@ -176,7 +185,11 @@ export default class Register extends Component {
             </form>
             
             <div className="register-btn-wrapper">
-              <input type="button" className="register-btn-text" value="Login" />
+              <input type="button" 
+                      className="register-btn-text" 
+                      onClick={this.onScreenChange} 
+                      value="Login"
+              />
             </div>
             
           </div>

@@ -16,8 +16,7 @@ export default class TabScreen extends Component {
     return true;
   }
 
-  changeScreen = (string) => {
-    console.log(string);
+  changeScreen = () => {
     this.setState({ isLogin: !this.state.isLogin });
   }
 
